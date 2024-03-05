@@ -1,4 +1,9 @@
-FROM ubuntu:latest
-LABEL authors="Endie"
+FROM gradle:8.4.0-jdk21-alpine AS build
+LABEL authors="Senko-san"
+LABEL authors="AgniaEndie"
+LABEL authors="GekkStr"
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /marspusher
+COPY . /marspusher
+RUN gradle bootJar
+ENTRYPOINT ["java","-XX:+UseZGC", "-jar", "/marspusher/build/libs/marspusher-0.0.1-SNAPSHOT.jar"]
