@@ -8,11 +8,11 @@ import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
 @Slf4j
-class MarspusherApplication {
+class MarspusherApplication
 
-    fun main(args: Array<String>) {
-        val logger = LoggerFactory.getLogger(this::class.java)
-        logger.info("WORK!!!!!!")
-        runApplication<MarspusherApplication>(*args)
-    }
+fun main(args: Array<String>) {
+    val logger = LoggerFactory.getLogger(MarspusherApplication::class.java)
+    logger.info("WORK!!!!!!")
+    runApplication<MarspusherApplication>(*args)
 }
+
