@@ -1,5 +1,6 @@
 package ru.foxstudios.marspusher.controller
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
@@ -11,7 +12,8 @@ import ru.foxstudios.marspusher.service.MessageService
 
 @RestController
 @RequestMapping("/data")
-class TestController(@Autowired var message: MessageService) {
+class TestController(@Autowired rabbitTemplate: RabbitTemplate) {
+    var message: MessageService = MessageService(rabbitTemplate)
     @PostMapping("/add")
     fun addDataToQueue(@ModelAttribute body: DataModelRequest): DataToQueueResponce {
         return message.addDataToQueue(body)
