@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.foxstudios.marspusher.dto.DataModel
+import ru.foxstudios.marspusher.model.requests.DataModelRequest
 import ru.foxstudios.marspusher.model.responces.DataToQueueResponce
 import ru.foxstudios.marspusher.service.MessageService
 
@@ -13,7 +13,7 @@ import ru.foxstudios.marspusher.service.MessageService
 @RequestMapping("/data")
 class TestController(@Autowired var message: MessageService) {
     @PostMapping("/add")
-    fun addDataToQueue(@ModelAttribute body: DataModel): DataToQueueResponce {
+    fun addDataToQueue(@ModelAttribute body: DataModelRequest): DataToQueueResponce {
         return message.addDataToQueue(body)
     }
 }
