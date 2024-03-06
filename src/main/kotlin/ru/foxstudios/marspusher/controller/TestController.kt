@@ -1,5 +1,6 @@
 package ru.foxstudios.marspusher.controller
 
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -10,7 +11,12 @@ import ru.foxstudios.marspusher.dto.DataModel
 @RequestMapping("/data")
 class TestController {
     @PostMapping("/add")
-    fun addDataToQueue(@ModelAttribute body: DataModel){
+    fun addDataToQueue(@ModelAttribute body: DataModel) {
 
+    }
+
+    @GetMapping("test")
+    fun test(): String {
+        return "test"
     }
 }
