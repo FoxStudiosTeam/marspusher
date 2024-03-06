@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class RabbitMQConfig(
-    @Value("marspusher.rabbitmq.login") var password: String,
-    @Value("marspusher.rabbitmq.password") var login: String
+    @Value("marspusher.rabbitmq.login") var login: String,
+    @Value("marspusher.rabbitmq.password") var password: String
 ) {
     @Bean
     fun messageQueue(): Queue {
