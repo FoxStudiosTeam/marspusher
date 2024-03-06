@@ -21,8 +21,9 @@ class RabbitMQConfig(
     fun messageQueue(): Queue {
         val connection: Connection = connectionFactory().createConnection()
         val channel = connection.createChannel(false)
-        val declareOk = channel.queueDeclarePassive("mars-queue")
-        if(declareOk.queue == null){
+        try{
+            channel.queueDeclarePassive("mars-queue")
+        }catch (e:Exception){
             channel.queueDeclare("mars-queue", true, false, false, null)
         }
         return Queue("mars-queue")
