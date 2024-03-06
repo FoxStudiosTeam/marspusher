@@ -1,5 +1,7 @@
 package ru.foxstudios.marspusher.service
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.apache.commons.codec.binary.Base64
 import org.apache.commons.io.FilenameUtils
 import org.springframework.amqp.rabbit.core.RabbitTemplate
@@ -14,7 +16,9 @@ import ru.foxstudios.marspusher.model.responces.DataToQueueResponce
 class MessageService(@Autowired val rabbitTemplate: RabbitTemplate) {
     fun addDataToQueue(model: DataModelRequest): DataToQueueResponce {
         val base64 = Base64.encodeBase64String(model.file.bytes)
-        val message = DataModel(model.name, model.commentary, base64, FilenameUtils.getExtension(model.file.originalFilename))
+        val data = DataModel(model.name, model.commentary, base64, FilenameUtils.getExtension(model.file.originalFilename))
+        val mapper = ObjectMapper().registerKotlinModule()
+        val message = mapper.writeValueAsString(data)
         rabbitTemplate.convertAndSend("mars", message)
         return DataToQueueResponce(0, "ok")
     }
