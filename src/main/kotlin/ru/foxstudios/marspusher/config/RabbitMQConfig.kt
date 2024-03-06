@@ -29,7 +29,7 @@ class RabbitMQConfig(
     @Bean
     fun connectionFactory(): ConnectionFactory {
         val cachingConnectionFactory = CachingConnectionFactory("mars-queue-service")
-        cachingConnectionFactory.port = 15672
+        cachingConnectionFactory.port = 5672
         cachingConnectionFactory.username = login
         cachingConnectionFactory.setPassword(password)
         cachingConnectionFactory.virtualHost = "cpp"
