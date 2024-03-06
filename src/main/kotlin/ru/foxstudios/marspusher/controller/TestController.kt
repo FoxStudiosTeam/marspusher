@@ -12,7 +12,7 @@ import ru.foxstudios.marspusher.dto.DataModel
 class TestController {
     @PostMapping("/add")
     fun addDataToQueue(@ModelAttribute body: DataModel) {
-
+        //comment
     }
 
     @GetMapping("test")
