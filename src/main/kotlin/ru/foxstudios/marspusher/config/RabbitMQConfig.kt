@@ -18,7 +18,7 @@ class RabbitMQConfig(@Value("marspusher.rabbitmq.login") var password: String, @
 
     @Bean
     fun connectionFactory(): ConnectionFactory {
-        val cachingConnectionFactory = CachingConnectionFactory("mars-listener-service")
+        val cachingConnectionFactory = CachingConnectionFactory("mars-queue-service")
         cachingConnectionFactory.port = 15672
         cachingConnectionFactory.username = login
         cachingConnectionFactory.setPassword(password)
