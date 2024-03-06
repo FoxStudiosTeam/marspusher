@@ -34,7 +34,6 @@ class RabbitMQConfig(
         cachingConnectionFactory.port = 5672
         cachingConnectionFactory.username = login
         cachingConnectionFactory.setPassword(password)
-        cachingConnectionFactory.virtualHost = "cpp"
         return cachingConnectionFactory
     }
 
