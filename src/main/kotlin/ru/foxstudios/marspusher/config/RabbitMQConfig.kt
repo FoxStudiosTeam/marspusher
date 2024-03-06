@@ -2,6 +2,7 @@ package ru.foxstudios.marspusher.config
 
 import org.springframework.amqp.core.Queue
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory
+import org.springframework.amqp.rabbit.connection.Connection
 import org.springframework.amqp.rabbit.connection.ConnectionFactory
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter
@@ -18,6 +19,12 @@ class RabbitMQConfig(
 ) {
     @Bean
     fun messageQueue(): Queue {
+        val connection: Connection = connectionFactory().createConnection()
+        val channel = connection.createChannel(false)
+        val declareOk = channel.queueDeclarePassive("mars-queue")
+        if(declareOk.queue == null){
+            channel.queueDeclare("mars-queue", true, false, false, null)
+        }
         return Queue("mars-queue")
     }
 
