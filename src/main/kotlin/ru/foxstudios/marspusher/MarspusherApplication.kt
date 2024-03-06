@@ -12,6 +12,7 @@ class MarspusherApplication
 fun main(args: Array<String>) {
     val logger = LoggerFactory.getLogger(MarspusherApplication::class.java)
     logger.info("WORK!!!!!!")
+    ////test
     runApplication<MarspusherApplication>(*args)
 }
 

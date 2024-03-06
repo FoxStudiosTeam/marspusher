@@ -18,8 +18,8 @@ class MessageService(@Autowired val rabbitTemplate: RabbitTemplate) {
         val base64 = Base64.encodeBase64String(model.file.bytes)
         val data = DataModel(model.name, model.commentary, base64, FilenameUtils.getExtension(model.file.originalFilename))
         val mapper = ObjectMapper().registerKotlinModule()
-        val message = mapper.writeValueAsString(data)
-        rabbitTemplate.convertAndSend("mars", message)
+        val message = mapper.writeValueAsString(data)//test
+        rabbitTemplate.convertAndSend("mars-queue", message)
         return DataToQueueResponce(0, "ok")
     }
 }
