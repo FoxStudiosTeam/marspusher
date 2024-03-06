@@ -17,4 +17,9 @@ class MessageService(@Autowired val rabbitTemplate: RabbitTemplate) {
         rabbitTemplate.convertAndSend("mars-queue", DataModel(model.name, model.commentary, base64, FilenameUtils.getExtension(model.file.originalFilename)))
         return DataToQueueResponce(0, rabbitTemplate.connectionFactory.host.toString())
     }
+
+    fun history() : List<DataModelRequest>? {
+        val list : List<DataModelRequest>? = null
+        return list
+    }
 }

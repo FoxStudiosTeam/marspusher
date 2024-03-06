@@ -2,6 +2,7 @@ package ru.foxstudios.marspusher.controller
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -17,5 +18,10 @@ class TestController(@Autowired rabbitTemplate: RabbitTemplate) {
     @PostMapping("/add")
     fun addDataToQueue(@ModelAttribute body: DataModelRequest): DataToQueueResponce {
         return message.addDataToQueue(body)
+    }
+
+    @GetMapping("/history")
+    fun history() : List<DataModelRequest>?{
+        return message.history()
     }
 }
