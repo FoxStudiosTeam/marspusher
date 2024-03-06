@@ -14,8 +14,7 @@ import ru.foxstudios.marspusher.model.responces.DataToQueueResponce
 class MessageService(@Autowired val rabbitTemplate: RabbitTemplate) {
     fun addDataToQueue(model: DataModelRequest): DataToQueueResponce {
         val base64 = Base64.encodeBase64String(model.file.bytes)
-        //DataModel(model.name, model.commentary, base64, FilenameUtils.getExtension(model.file.originalFilename)))
-        rabbitTemplate.convertAndSend("mars-queue", "test")
+        rabbitTemplate.convertAndSend("mars-queue", DataModel(model.name, model.commentary, base64, FilenameUtils.getExtension(model.file.originalFilename)))
         return DataToQueueResponce(0, rabbitTemplate.connectionFactory.host.toString())
     }
 }
