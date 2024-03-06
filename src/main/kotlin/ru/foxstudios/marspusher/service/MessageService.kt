@@ -20,6 +20,6 @@ class MessageService(@Autowired val rabbitTemplate: RabbitTemplate) {
         val mapper = ObjectMapper().registerKotlinModule()
         val message = mapper.writeValueAsString(data)//test
 //        rabbitTemplate.convertAndSend("mars-queue", message)
-        return DataToQueueResponce(0, rabbitTemplate.routingKey)
+        return DataToQueueResponce(0, rabbitTemplate.connectionFactory.host.toString())
     }
 }
