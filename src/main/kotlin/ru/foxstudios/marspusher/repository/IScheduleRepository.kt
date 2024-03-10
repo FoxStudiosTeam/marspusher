@@ -6,4 +6,5 @@ import java.time.LocalDateTime
 
 interface IScheduleRepository : JpaRepository<ScheduleModel, String> {
     fun findByFromDBeforeAndToDAfter(fromD: LocalDateTime, toD: LocalDateTime) : ScheduleModel
+
 }
