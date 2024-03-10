@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import ru.foxstudios.marspusher.dto.ScheduleModel
 import ru.foxstudios.marspusher.model.requests.RequestScheduleModel
 import ru.foxstudios.marspusher.model.requests.DataModelRequest
 import ru.foxstudios.marspusher.model.requests.RequestSchedule
@@ -35,7 +36,7 @@ class TestController(@Autowired rabbitTemplate: RabbitTemplate,@Autowired reposi
     }
 
     @PostMapping("/getschedule")
-    fun getSchedule(@RequestBody body: RequestSchedule){
-        message.getSchedule(body)
+    fun getSchedule(@RequestBody body: RequestSchedule): ScheduleModel {
+        return message.getSchedule(body)
     }
 }
