@@ -46,8 +46,9 @@ class MessageService(@Autowired val rabbitTemplate: RabbitTemplate, val reposito
         repository.save(modelToSave)
     }
 
-    fun getSchedule(body: RequestSchedule): ScheduleModel {
-        val date = LocalDateTime.parse(body.time, formatter)
+    fun getSchedule(): ScheduleModel {
+        val body = LocalDateTime.now().format(formatter)
+        val date = LocalDateTime.parse(body, formatter)
         return repository.findByFromDBeforeAndToDAfter(date, date)
     }
 }
