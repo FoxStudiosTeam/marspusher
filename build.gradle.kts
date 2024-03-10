@@ -37,10 +37,6 @@ dependencies {
     implementation("commons-io:commons-io:2.15.1")
     // https://mvnrepository.com/artifact/commons-codec/commons-codec
     implementation("commons-codec:commons-codec:1.16.1")
-    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
-    implementation("org.flywaydb:flyway-core:10.9.1")
-    // https://mvnrepository.com/artifact/org.flywaydb/flyway-database-postgresql
-    runtimeOnly("org.flywaydb:flyway-database-postgresql:10.9.1")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
