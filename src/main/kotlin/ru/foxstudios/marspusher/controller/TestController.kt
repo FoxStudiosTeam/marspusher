@@ -32,6 +32,7 @@ class TestController(@Autowired rabbitTemplate: RabbitTemplate,@Autowired reposi
 
     @PostMapping("/addschedule")
     fun addSchedule(@RequestBody body: RequestScheduleModel){
+        print("here")
         message.addSchedule(body)
     }
 
