@@ -35,8 +35,7 @@ class MessageService(@Autowired val rabbitTemplate: RabbitTemplate, val reposito
     }
 
     fun addSchedule(body: RequestScheduleModel) {
-
-
+        println("test")
         val modelToSave = ScheduleModel(
             UUID.randomUUID().toString(),
             body.speed.toDouble(),
